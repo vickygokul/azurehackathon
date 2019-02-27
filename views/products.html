@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Products &mdash; Colorlib e-Commerce Template</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<style>
+.wrapper {
+    text-align: center;
+}
+
+.button {
+    background-color:black;
+    position: relative;
+    top: 50%;
+    font-size: 16px;
+    padding: 15px 32px;
+    color: white;
+}
+.bg {
+  /* The image used */
+  background-image: url("images/shop1.jpg");
+
+  /* Full height */
+  height: 648px; 
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+</style>
+<body>
+    <div class="bg">
+    <header>
+        <h1 style="text-align:center;color:white">Add Products</h1>
+    </header>
+    <div class = "container">
+            <!-- <div class="panel panel-default">
+                    <div class="panel-body"> -->
+        <!-- product name:<br>
+            <input type="text" name="product name" style="text-align:center">
+            <br>
+            <br></product>
+        product id:<br>
+            <input type="text" name="product id">
+            <br>
+            <br> </product>
+        product category:<br>
+            <input type="text" name="product category">
+            <br>
+            </product> -->
+            
+                    
+                    <form>
+                      <div class="form-group">
+                         <label for="id" style="color:white">Product Id:</label> 
+                        <input type="text" class="form-control" id="id" placeholder="Enter id" name="id">
+                      </div>
+                      <div class="form-group">
+                        <label for="name" style="color:white">Product Name:</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
+                      </div>
+                      <div class="form-group">
+                            <label for="category" style="color:white">Product Category:</label>
+                            <input type="text" class="form-control" id="cat" placeholder="Enter category" name="category">
+                          </div>
+                          <div class="form-group">
+                                <label for="description" style="color:white">Product Description:</label>
+                                <input type="text" class="form-control" id="desc" placeholder="Enter description" name="description">
+                              </div>
+                      
+                      
+                    </form>
+                   
+                  
+                  
+    <!-- </div>
+    </div> -->
+    </div>  
+    <div class="wrapper">
+    <button class="button" onclick="alert('Product saved')">Save</button>
+    </div>
+    </div>
+</body>
+    </html>
