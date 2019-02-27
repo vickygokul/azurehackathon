@@ -53,37 +53,80 @@ app.get('/',async function(req, res, next) {
     try {
       productDetails= [];
       const token = await acquireTokenWithClientCredentials(RESOURCE, CLIENT_APP_Id, CLIENT_SECRET, AUTHORITY);
-  
+      for (var j=8; j<=11;j++){
       // Calling workbench API
       const response = await axios({
         method: 'GET',
-        url: `${WORKBENCH_API_URL}/api/v1/contracts/6`,
+        url: `${WORKBENCH_API_URL}/api/v1/contracts/${j}`,
         headers: {'Authorization': `Bearer ${token.access_token}`},
       });
-      products = response.data.contractProperties;
-      console.log(JSON.stringify(response.data));
-      console.log(response.data);
-  
-     
-      for(var i=0;i<products.length;i++){
-          
-          if(products[i].workflowPropertyId > 30 && products[i].workflowPropertyId < 35){
-              
-              productDetails.push(products[i].value);
-          }
+
+    var productDetailsIndividual = {};
+    products = response.data.contractProperties;
+    console.log(products.length);
+    for(var i=0;i<products.length;i++){
+      if(products[i].workflowPropertyId == 70){
+        console.log("inside if");
+        if (products[i].value === '0x1584b17ff1a97649284526e3906d62e169446b95'){
+          console.log("inisde asus");
+          productDetailsIndividual.Manufacturer = "ASUS";
+        }
+        if (products[i]['value'] === '0x032f7fb389480308bcc5e952cd8a246dba48e112'){
+          productDetailsIndividual.Manufacturer = "Levis";
+        }
+        if (products[i].value === '0x909a4cb9eeba9533edc983d7492768ef77e8edd5'){
+          productDetailsIndividual.Manufacturer = "Reebok";
+        }
       }
-      console.log(productDetails);
-      console.log("returned");
-     
-  
+      if(products[i].workflowPropertyId == 71){
+        productDetailsIndividual.Distributor = 'JMD Distributor';
+      }
+      if(products[i].workflowPropertyId == 72){
+        productDetailsIndividual.Retailer = 'Retail Net';
+      }
+      if(products[i].workflowPropertyId == 73){
+        productDetailsIndividual.ShipmentCompany = 'Ekart';
+      }
+      if(products[i].workflowPropertyId == 74){
+        productDetailsIndividual.SupplyChainObserver = 'Administrator';
+      }
+      if(products[i].workflowPropertyId == 76){
+        productDetailsIndividual.CompilanceDetail = products[i].value;
+      }
+      if(products[i].workflowPropertyId == 77){
+        productDetailsIndividual.ProductName = products[i].value;
+      }
+      if(products[i].workflowPropertyId == 78){
+        productDetailsIndividual.ProductCategory = products[i].value;
+      }
+      if(products[i].workflowPropertyId == 79){
+        productDetailsIndividual.ProductDetails = products[i].value;
+      }
+      if(products[i].workflowPropertyId == 80){
+        productDetailsIndividual.ProductQuantity = products[i].value;
+      }
+      if(products[i].workflowPropertyId == 81){
+        productDetailsIndividual.ProductImage = products[i].value;
+      }
+      if(products[i].workflowPropertyId == 82){
+        productDetailsIndividual.ProductPrice = products[i].value;
+      }
+
     }
-    catch (err) {
-      console.error(err);
-    }
-  
+    productDetails.push(productDetailsIndividual);
+
+
+
+
+  }
+  }
+  catch (err) {
+    console.error(err);
+  }
+    console.log(productDetails);
     res.render('index', { productDetails : productDetails });
   });
-  
+
 app.use('/users', usersRouter);
 app.set('view engine', 'ejs');
 
@@ -91,8 +134,5 @@ app.set('view engine', 'ejs');
 
 
 
-    
+
 module.exports = app;
-
-
-
